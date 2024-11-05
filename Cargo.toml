@@ -1,0 +1,36 @@
+[workspace]
+resolver = "2"
+members = [ "yggdrasil-bus","yggdrasil-scheduler"]
+
+[workspace.dependencies]
+# runtime
+tokio = { version = "1.0", features = ["full"] }
+async-trait = "0.1"
+anyhow = "1.0.89"
+tracing = "0.1"
+
+# Data
+serde = { version = "1.0", features = ["derive"] }
+serde_repr = "0.1.19"
+serde_json = "1.0"
+uuid = { version = "1.10", features = ["serde", "v4"] }
+chrono = { version = "0.4", features = ["serde"] }
+
+# Bus
+async-nats = "0.37.0"
+
+[workspace.dependencies.sea-orm]
+version = "1.0.0-rc.5"
+features = [
+    "sqlx-postgres",
+    "runtime-tokio-rustls",
+    "macros",
+    "uuid",
+    "debug-print",
+    "with-uuid",
+    "with-chrono",
+    "postgres-array",
+    "with-rust_decimal",
+    "mock",
+    "tests-cfg"
+]
